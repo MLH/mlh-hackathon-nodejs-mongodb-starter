@@ -12,17 +12,26 @@ This project requires the following tools:
 
 - [Node.js](https://nodejs.org/en/) - The JavaScript environment for server-side code.
 - [NPM](https://www.npmjs.com/) - A Node.js package manager used to install dependencies.
-- [PostgreSQL](https://www.postgresql.org/) - A relational database system.
+- [MongoDB Community Server](https://www.mongodb.com/try/download/community) - A NoSQL database system.
 
-To get started, install NPM and Postgres on your local computer if you don't have them already. A simple way for Mac OS X users to install Postgres is using [Postgres.app](https://postgresapp.com/). Here is a [Windows guide](https://www.postgresqltutorial.com/install-postgresql/) for installing PostgresSQL.
+To get started, install NPM and MongoDB Community Server on your local computer if you don't have them already. 
+[Here](https://docs.mongodb.com/manual/administration/install-community/) is a guide to install MongdoDB on any major platform (Windows, Mac, Linux)
+
+If you're on Windows, follow this [tutorial](http://sysadmindata.com/set-mongodb-path-windows/) that would be relevant for Step 4. 
+
+**Note:** The tutorial's example uses version 3.4 of MongoDB, make sure you type the version that is installed on your computer. If you're not sure what version you have, you can check here:
+
+```
+C:\Program Files\MongoDB\Server
+```
 
 ## Getting Started
 
 **Step 1. Clone the code into a fresh folder**
 
 ```
-$ git clone https://github.com/MLH/mlh-hackathon-nodejs-starter.git
-$ cd mlh-hackathon-nodejs-starter
+$ git clone https://github.com/MLH/mlh-hackathon-nodejs-mongodb-starter.git
+$ cd mlh-hackathon-nodejs-mongodb-starter
 ```
 
 **Step 2. Install Dependencies.**
@@ -35,7 +44,16 @@ $ npm install
 
 **Step 3: Create an app on GitHub**
 
-Head over to [GitHub OAuth apps](https://github.com/settings/developers) and create a new OAuth app. Name it what you like but you'll need to specify a callback URL, which should be something like:
+Head over to [GitHub OAuth apps](https://github.com/settings/developers) and create a new OAuth app. 
+
+Under **Application name**, name it what you like
+
+You'll need to specify a **Homepage URL**, which should be something like:
+```
+https://localhost:5000
+```
+
+You'll need to specify a **Authorization callback URL**, which should be something like:
 
 ```
 https://localhost:5000/auth/callback/github
@@ -54,10 +72,27 @@ GITHUB_CLIENT_ID="[INSERT_CLIENT_ID]"
 GITHUB_CLIENT_SECRET="[INSERT_CLIENT_SECRET]"
 ```
 
-You replace the GitHub credentials here and update the database URL. Learn more about the required [Environment Variables here](#environment-variables).
+You replace the GitHub credentials here and update the database URL. Make sure to remove the quotation marks (" ")Learn more about the required [Environment Variables here](#environment-variables).
 
-Now we're ready to start our server which is as simple as:
+To find your DATABASE_URL:
+- Open up the terminal(if you're using Windows, it is recommended to use PowerShell) and type in ```mongo``` and hit Enter. You should see a few lines print out. 
+- On the second line that says ```connecting to:```, you should see a URL that starts with ```mongodb://```
+- That is your DATABASE_URL, copy and paste the full URL and replace ```"[INSERT_DATABASE_URL]"```
 
+To find your GITHUB_CLIENT_ID and GITHUB_CLIENT_SECRET:
+- Go to you OAuth app and you should see an alphanumeric string for both "Client ID" and "Client Secret"
+- Your Client ID goes with the GITHUB_CLIENT_ID field
+- Your Client Secret goes with the GITHUB_CLIENT_SECRET field
+
+
+To get the project up and running, we need to do 2 simple things:
+
+Launch the server:
+```
+$ mongo
+```
+
+Lanuch the application:
 ```
 $ npm start
 ```
@@ -69,8 +104,8 @@ You will see the build errors and warnings in the console.
 
 # What's Included?
 
-- [Express](https://expressjs.com/) - A minimal web framework for Node.js web applications
-- [Sequelize](http://docs.sequelizejs.com/) - A promise-based ORM for Node.js that supports PostgreSQL, MySQL, and SQLite.
+- [Express](https://expressjs.com/) - A minimal web framework for Node.js web applications.
+- [Mongoose](https://mongoosejs.com/) - A elegant mongodb object modeling for node.js.
 - [Bootstrap 4](https://getbootstrap.com/) - An open source design system for HTML, CSS, and JS.
 - [Handlebars](https://handlebarsjs.com/) - A popular templating language for building layouts.
 
