@@ -23,15 +23,15 @@ router.get('/callback/github', async (req, res) => {
 
   // Fetch user from GitHub OAuth and store in session
   const github = new GitHub({ client_id: config.githubClientId, client_secret: config.githubClientSecret });
-  const access_Token = await github.get_token(req.query.code);
+  const accessToken = await github.get_token(req.query.code);
 
-  if (!access_Token) {
+  if (!accessToken) {
     return res.render('404');
   }
 
-  const user = await models.User.find_or_create_from_token(access_token);
+  const user = await models.User.find_or_create_from_token(accessToken);
 
-  req.session.access_token = access_Token;
+  req.session.access_token = accessToken;
   req.session.user = user;
 
   return res.redirect('/');
