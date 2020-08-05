@@ -5,7 +5,8 @@
   "scripts": {
     "start": "nodemon app/index.js",
     "deploy": "NODE_ENV=production node app/index.js",
-    "lint": "eslint"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "dependencies": {
     "axios": "^0.19.2",
