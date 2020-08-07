@@ -20,17 +20,17 @@ class GitHub {
     const config = { headers: { Accept: 'application/json' } };
     const params = {
       code,
-      clientId: this.clientId,
-      clientSecret: this.clientSecret,
+      client_id: this.clientId,
+      client_secret: this.clientSecret,
     };
 
     const { data } = await axios.post(tokenUrl, params, config);
-    return data.accessToken;
+    return data.access_token;
   }
 
   async get(routeUrl, params = {}) {
     const url = apiUrl + routeUrl;
-    params.accessToken = this.accessToken;
+    params.access_token = this.accessToken;
 
     const response = await axios.get(url, { params });
     return response.data;
