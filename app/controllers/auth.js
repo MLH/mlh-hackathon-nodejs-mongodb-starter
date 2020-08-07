@@ -12,7 +12,7 @@ router.get('/logout', (req, res) => {
 });
 
 router.get('/login/github', (req, res) => {
-  const github = new GitHub({ client_id: config.githubClientId, client_secret: config.githubClientSecret });
+  const github = new GitHub({ clientId: config.githubClientId, clientSecret: config.githubClientSecret });
   res.redirect(github.authorizationUrl('public_repo'));
 });
 
@@ -22,8 +22,8 @@ router.get('/callback/github', async (req, res) => {
   }
 
   // Fetch user from GitHub OAuth and store in session
-  const github = new GitHub({ client_id: config.githubClientId, client_secret: config.githubClientSecret });
-  const accessToken = await github.get_token(req.query.code);
+  const github = new GitHub({ clientId: config.githubClientId, clientSecret: config.githubClientSecret });
+  const accessToken = await github.getToken(req.query.code);
 
   if (!accessToken) {
     return res.render('404');
