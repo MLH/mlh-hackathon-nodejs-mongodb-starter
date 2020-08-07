@@ -8,7 +8,7 @@ module.exports.registerRoutes = (app) => {
 };
 
 module.exports.registerErrorHandlers = (app) => {
-  app.use((err, req, res, next) => {
+  app.use((err, req, res) => {
     console.error(err.message);
     res.status(err.status || 500);
     res.render('500', {

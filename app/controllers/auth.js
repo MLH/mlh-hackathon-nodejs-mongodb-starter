@@ -13,7 +13,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/login/github', (req, res) => {
   const github = new GitHub({ client_id: config.githubClientId, client_secret: config.githubClientSecret });
-  res.redirect(github.authorization_url('public_repo'));
+  res.redirect(github.authorizationUrl('public_repo'));
 });
 
 router.get('/callback/github', async (req, res) => {
