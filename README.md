@@ -1,4 +1,3 @@
-
 # Introduction
 
 This is a hackathon boilerplate for new Node.js applications created by [Major League Hacking](https://github.com/mlh). It is for hackers looking to get started quickly on a new hackathon project using the Node.js environment.
@@ -69,18 +68,20 @@ Create a new file named `.env` by duplicating `.env.sample`. Update the new file
 
 ```
 # .env file
-DATABASE_URL="[INSERT_DATABASE_URL]"
+MONGODB_URI="[INSERT_MONGODB_URI]"
 GITHUB_CLIENT_ID="[INSERT_CLIENT_ID]"
 GITHUB_CLIENT_SECRET="[INSERT_CLIENT_SECRET]"
 ```
 
 You'll place your GitHub OAuth credentials here and your database URL. Make sure to remove the quotation marks (" "). Learn more about the required [Environment Variables here](#environment-variables).
 
-To find your ```DATABASE_URL```:
+To find your ```MONGODB_URI```:
 - Open up the terminal and type in ```mongo``` and hit Enter. You should see a few lines print out. 
 	- If you're using **Windows**, it is recommended to use PowerShell
 - On the second line that says ```connecting to:```, you should see a URL that starts with ```mongodb://```
-- That is your ```DATABASE_URL```, copy and paste the full URL and replace ```"[INSERT_DATABASE_URL]"```
+- That is your ```MONGODB_URI```, copy and paste the link into ```"[INSERT_MONGODB_URI]"```
+	- Note: Make sure to only copy and paste up till the first alpha character.
+	- Ex: ```mongodb://111.1.1.1/words```, copy only ```mongodb://111.1.1.1/```
 
 To find your ```GITHUB_CLIENT_ID``` and ```GITHUB_CLIENT_SECRET```:
 - Go to you OAuth app and you should see an alphanumeric string for both "Client ID" and "Client Secret"
